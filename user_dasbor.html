@@ -193,7 +193,7 @@
             </nav>
         </aside>
 
-        <main class="flex-1 p-4 md:p-8 transition-all duration-300">
+        <main class="flex-1 p-4 md:p-8 transition-all duration-300 pb-24 md:pb-8">
             <div
                 class="flex items-center gap-2 text-[10px] md:text-xs text-gray-400 mb-6 font-bold uppercase tracking-widest">
                 <i class="fas fa-home"></i> <span>/</span> <span class="text-sky-blue">Dasbor Utama</span>
@@ -201,14 +201,51 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 space-y-6">
+
                     <div class="bg-white p-6 rounded-2xl shadow-md border-b-4 border-sky-blue">
-                        <h2 class="text-xl font-black mb-1">Halo, Yohanes!</h2>
-                        <p class="text-sm text-gray-500 leading-relaxed">Sistem mendeteksi profil Anda belum lengkap.
-                            Silakan ikuti tahapan di bawah ini.</p>
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                            <div class="text-center md:text-left">
+                                <h2 class="text-xl font-black mb-1">Halo, Yohanes!</h2>
+                                <p class="text-sm text-gray-500 leading-relaxed">Sistem mendeteksi profil Anda belum
+                                    lengkap. Silakan ikuti tahapan di bawah ini.</p>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="relative h-14 w-14">
+                                        <svg class="h-full w-full" viewBox="0 0 36 36">
+                                            <circle class="stroke-current text-gray-100" stroke-width="3"
+                                                fill="transparent" r="16" cx="18" cy="18"></circle>
+                                            <circle class="stroke-current text-jayapura-yellow" stroke-width="3"
+                                                stroke-dasharray="65, 100" stroke-linecap="round" fill="transparent"
+                                                r="16" cx="18" cy="18"></circle>
+                                        </svg>
+                                        <span
+                                            class="absolute inset-0 flex items-center justify-center text-[10px] font-black">65%</span>
+                                    </div>
+                                    <span class="text-[8px] font-bold uppercase mt-1 text-gray-400">Biodata</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="relative h-14 w-14">
+                                        <svg class="h-full w-full" viewBox="0 0 36 36">
+                                            <circle class="stroke-current text-gray-100" stroke-width="3"
+                                                fill="transparent" r="16" cx="18" cy="18"></circle>
+                                            <circle class="stroke-current text-sky-blue" stroke-width="3"
+                                                stroke-dasharray="20, 100" stroke-linecap="round" fill="transparent"
+                                                r="16" cx="18" cy="18"></circle>
+                                        </svg>
+                                        <span
+                                            class="absolute inset-0 flex items-center justify-center text-[10px] font-black">20%</span>
+                                    </div>
+                                    <span class="text-[8px] font-bold uppercase mt-1 text-gray-400">Berkas</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="bg-white p-8 rounded-2xl shadow-md relative">
                         <div class="absolute left-12 top-24 bottom-24 w-0.5 bg-gray-100"></div>
+
                         <div class="space-y-12">
                             <div class="relative flex items-center gap-8">
                                 <div
@@ -224,22 +261,96 @@
                             <div class="relative flex items-center gap-8">
                                 <div
                                     class="z-10 bg-jayapura-yellow w-10 h-10 rounded-full flex items-center justify-center text-white ring-8 ring-yellow-50 shadow-md">
-                                    <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-pencil-alt text-sm"></i>
                                 </div>
                                 <div class="bg-white p-4 rounded-xl flex-1 border-2 border-jayapura-yellow shadow-sm">
-                                    <h4 class="font-bold text-sm text-jayapura-yellow uppercase">Lengkapi Biodata</h4>
-                                    <p class="text-xs text-gray-500 mb-3">Mohon lengkapi Data Diri dan Data Wali.</p>
-                                    <a href="biodata.html"
-                                        class="inline-flex items-center gap-2 bg-sky-blue text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase hover:bg-blue-600 transition">
-                                        Mulai Isi <i class="fas fa-arrow-right"></i>
+                                    <div class="flex justify-between items-start mb-1">
+                                        <h4 class="font-black text-sm text-gray-800 uppercase tracking-tight">Lengkapi
+                                            Biodata</h4>
+                                        <span
+                                            class="text-[10px] font-bold text-jayapura-yellow bg-yellow-50 px-2 py-0.5 rounded">65%
+                                            Selesai</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mb-3">Mohon lengkapi Data Diri, Orang Tua/Wali, dan
+                                        Alamat.</p>
+                                    <a href="user_biodata.html"
+                                        class="inline-flex items-center gap-2 bg-sky-blue text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase hover:bg-blue-600 transition shadow-lg shadow-sky-blue/20">
+                                        Update Data <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="relative flex items-center gap-8">
+                                <div
+                                    class="z-10 bg-sky-blue w-10 h-10 rounded-full flex items-center justify-center text-white ring-8 ring-blue-50 shadow-md">
+                                    <i class="fas fa-file-upload text-sm"></i>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl flex-1 border-2 border-sky-blue shadow-sm">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <h4 class="font-black text-sm text-gray-800 uppercase tracking-tight">Unggah
+                                            Berkas</h4>
+                                        <span
+                                            class="text-[10px] font-bold text-sky-blue bg-blue-50 px-2 py-0.5 rounded">20%
+                                            Selesai</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mb-3">Unggah dokumen syarat seperti KTP, KK, dan
+                                        Ijazah (PDF).</p>
+                                    <a href="user_berkas.html"
+                                        class="inline-flex items-center gap-2 bg-sky-blue text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase hover:bg-blue-600 transition shadow-lg shadow-sky-blue/20">
+                                        Unggah Berkas <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-jayapura-red">
+                        <h3
+                            class="text-xs font-black uppercase tracking-widest text-gray-400 mb-4 flex items-center gap-2">
+                            <i class="fas fa-bell text-jayapura-red"></i> Pengumuman
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="p-3 bg-red-50 rounded-lg border border-red-100">
+                                <p class="text-[11px] font-bold text-jayapura-red leading-tight">Batas Akhir Pendaftaran
+                                </p>
+                                <p class="text-[10px] text-red-700 mt-1">Sistem akan ditutup otomatis pada 30 Januari
+                                    2026 pukul 23:59 WIT.</p>
+                            </div>
+
+                            <div class="p-3 bg-blue-50 rounded-lg border border-blue-100">
+                                <p class="text-[11px] font-bold text-sky-blue leading-tight">Format Berkas</p>
+                                <p class="text-[10px] text-blue-700 mt-1">Pastikan semua dokumen di-scan dalam format
+                                    PDF dengan ukuran maksimal 2MB per file.</p>
+                            </div>
+
+                            <div class="p-3 bg-yellow-50 rounded-lg border border-yellow-100">
+                                <p class="text-[11px] font-bold text-yellow-700 leading-tight">Butuh Bantuan?</p>
+                                <p class="text-[10px] text-yellow-600 mt-1">Hubungi Call Center Dinas Pendidikan di
+                                    WhatsApp: 0812-XXXX-XXXX (Jam Kerja).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-sky-blue p-6 rounded-2xl shadow-md text-white">
+                        <h3 class="text-[10px] font-black uppercase tracking-widest mb-3 opacity-80">Unduhan Dokumen
+                        </h3>
+                        <a href="#"
+                            class="flex items-center justify-between p-2 bg-white/10 hover:bg-white/20 rounded-lg transition mb-2">
+                            <span class="text-xs font-bold">Panduan Pendaftaran</span>
+                            <i class="fas fa-download text-xs"></i>
+                        </a>
+                        <a href="#"
+                            class="flex items-center justify-between p-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
+                            <span class="text-xs font-bold">Format Surat Pernyataan</span>
+                            <i class="fas fa-download text-xs"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </main>
+
     </div>
 
     <nav
@@ -249,15 +360,15 @@
             <i class="fas fa-th-large text-lg"></i>
             <span class="text-[9px] mt-1 uppercase">Dasbor</span>
         </a>
-        <a href="biodata.html" class="flex flex-col items-center text-gray-400">
+        <a href="user_biodata.html" class="flex flex-col items-center text-gray-400">
             <i class="fas fa-user-edit text-lg"></i>
             <span class="text-[9px] mt-1 uppercase tracking-tighter">Biodata</span>
         </a>
-        <a href="berkas.html" class="flex flex-col items-center text-gray-400">
+        <a href="user_berkas.html" class="flex flex-col items-center text-gray-400">
             <i class="fas fa-file-upload text-lg"></i>
             <span class="text-[9px] mt-1 uppercase tracking-tighter">Berkas</span>
         </a>
-        <a href="beasiswa.html" class="flex flex-col items-center text-gray-400">
+        <a href="user_beasiswa.html" class="flex flex-col items-center text-gray-400">
             <i class="fas fa-history text-lg"></i>
             <span class="text-[9px] mt-1 uppercase tracking-tighter">Riwayat</span>
         </a>
