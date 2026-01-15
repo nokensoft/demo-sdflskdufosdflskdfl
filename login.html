@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SIM Beasiswa Kabupaten Jayapura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sky-blue': '#00AEEF',
+                        'jayapura-yellow': '#FFD100',
+                        'jayapura-red': '#E62129',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .nav-active-mobile {
+            color: #E62129;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col">
+
+    <header class="bg-sky-blue text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center space-x-3 mx-auto md:mx-0">
+                <img src="images/logo-kabupaten-jayapura.png" alt="Logo Jayapura" class="h-10 w-auto" onerror="this.src='https://placehold.co/40x40/00AEEF/white?text=Kj'">
+                <div class="text-center md:text-left">
+                    <h1 class="font-bold text-sm md:text-xl leading-tight tracking-tight uppercase">SIM Beasiswa</h1>
+                    <p class="text-[10px] md:text-xs font-medium uppercase tracking-widest text-jayapura-yellow">Kabupaten Jayapura</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-6 font-bold">
+                <a href="index.html" :class="currentPage === 'index.html' ? 'nav-active-desktop' : ''" class="hover:text-jayapura-yellow transition py-1 flex items-center gap-2">
+                    <i class="fas fa-home text-sm"></i> Beranda
+                </a>
+                <a href="informasi.html" :class="currentPage === 'informasi.html' ? 'nav-active-desktop' : ''" class="hover:text-jayapura-yellow transition py-1 flex items-center gap-2">
+                    <i class="fas fa-info-circle text-sm"></i> Pusat Informasi
+                </a>
+                <a href="kontak.html" :class="currentPage === 'kontak.html' ? 'nav-active-desktop' : ''" class="hover:text-jayapura-yellow transition py-1 flex items-center gap-2">
+                    <i class="fas fa-phone text-sm"></i> Kontak
+                </a>
+                <a href="login.html" class="bg-jayapura-red hover:bg-red-700 text-white px-5 py-2 rounded-full shadow-md transition flex items-center gap-2">
+                    <i class="fab fa-google"></i> Login Google
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4 py-12">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-md overflow-hidden border-t-8 border-jayapura-yellow">
+            <div class="p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-black text-gray-900 uppercase">Selamat Datang</h2>
+                    <p class="text-gray-500 text-sm mt-1">Silakan masuk untuk mengelola beasiswa Anda</p>
+                </div>
+
+                <button
+                    class="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 hover:border-sky-blue hover:bg-gray-50 py-3 rounded-xl font-bold transition-all duration-300 shadow-sm mb-6 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-5 h-5">
+                        <path fill="#EA4335"
+                            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                        <path fill="#4285F4"
+                            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                        <path fill="#FBBC05"
+                            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z" />
+                        <path fill="#34A853"
+                            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                        <path fill="none" d="M0 0h48v48H0z" />
+                    </svg>
+                    <span class="text-gray-700 group-hover:text-sky-blue transition-colors">Daftar Cepat dengan
+                        Google</span>
+                </button>
+
+                <div class="relative flex items-center mb-6">
+                    <div class="flex-grow border-t border-gray-200"></div>
+                    <span class="flex-shrink mx-4 text-gray-400 text-xs font-bold uppercase tracking-widest">Atau</span>
+                    <div class="flex-grow border-t border-gray-200"></div>
+                </div>
+
+                <form action="user_home.html" class="space-y-5" x-data="{ showPassword: false }">
+                    <div class="space-y-2">
+                        <label class="text-xs font-black uppercase text-gray-500 tracking-wider">Email atau No.
+                            HP</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input type="text" placeholder="contoh@gmail.com / 0812..."
+                                class="w-full pl-10 pr-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:border-sky-blue focus:ring-4 focus:ring-sky-blue/10 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label class="text-xs font-black uppercase text-gray-500 tracking-wider">Kata Sandi</label>
+                            <a href="#"
+                                class="text-[10px] font-bold text-sky-blue hover:text-jayapura-red transition uppercase">Lupa
+                                Sandi?</a>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input :type="showPassword ? 'text' : 'password'" placeholder="••••••••"
+                                class="w-full pl-10 pr-12 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:border-sky-blue focus:ring-4 focus:ring-sky-blue/10 outline-none transition">
+                            <button type="button" @click="showPassword = !showPassword"
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-sky-blue transition">
+                                <i class="fas" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-sky-blue hover:bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md transition transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
+                        <i class="fas fa-sign-in-alt"></i> Masuk Ke Portal
+                    </button>
+                </form>
+
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-gray-500">Belum memiliki akun?
+                        <a href="daftar.html" class="text-jayapura-red font-bold hover:underline">Daftar Sekarang</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-4 border-t border-gray-100 flex items-center justify-center gap-2">
+                <i class="fas fa-shield-halved text-sky-blue text-xs"></i>
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Sistem Keamanan Terenkripsi
+                    Nokensoft</span>
+            </div>
+        </div>
+    </main>
+
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50 py-3 border-t border-gray-100">
+        <div class="flex justify-around items-center">
+            <a href="index.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">Beranda</span>
+            </a>
+            <a href="informasi.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-newspaper text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">Info</span>
+            </a>
+            <a href="login.html" class="nav-active-mobile flex flex-col items-center">
+                <i class="fab fa-google text-2xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">Login</span>
+            </a>
+            <a href="kontak.html" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-headset text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">Kontak</span>
+            </a>
+            <a href="index.html#faq" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-question-circle text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <footer class="py-6 text-center text-gray-400 text-xs mb-20 md:mb-0">
+        <p>&copy; 2024 Pemerintah Kabupaten Jayapura. Powered by Nokensoft.com</p>
+    </footer>
+
+</body>
+
+</html>

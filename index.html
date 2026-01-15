@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Beasiswa Kabupaten Jayapura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sky-blue': '#00AEEF',
+                        'jayapura-yellow': '#FFD100',
+                        'jayapura-red': '#E62129',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .nav-active-desktop { border-bottom: 3px solid #FFD100; color: #FFD100; }
+        .nav-active-mobile { color: #E62129; transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans" x-data="{ currentPage: 'index.html' }">
+
+    <header class="bg-sky-blue text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center space-x-3 mx-auto md:mx-0">
+                <img src="images/logo-kabupaten-jayapura.png" alt="Logo Jayapura" class="h-10 w-auto" onerror="this.src='https://placehold.co/40x40/00AEEF/white?text=Kj'">
+                <div class="text-center md:text-left">
+                    <h1 class="font-bold text-sm md:text-xl leading-tight tracking-tight uppercase">SIM Beasiswa</h1>
+                    <p class="text-[10px] md:text-xs font-medium uppercase tracking-widest text-jayapura-yellow">Kabupaten Jayapura</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-6 font-bold">
+                <a href="index.html" :class="currentPage === 'index.html' ? 'nav-active-desktop' : ''" class="hover:text-jayapura-yellow transition py-1 flex items-center gap-2">
+                    <i class="fas fa-home text-sm"></i> Beranda
+                </a>
+                <a href="informasi.html" :class="currentPage === 'informasi.html' ? 'nav-active-desktop' : ''" class="hover:text-jayapura-yellow transition py-1 flex items-center gap-2">
+                    <i class="fas fa-info-circle text-sm"></i> Pusat Informasi
+                </a>
+                <a href="kontak.html" :class="currentPage === 'kontak.html' ? 'nav-active-desktop' : ''" class="hover:text-jayapura-yellow transition py-1 flex items-center gap-2">
+                    <i class="fas fa-phone text-sm"></i> Kontak
+                </a>
+                <a href="login.html" class="bg-jayapura-red hover:bg-red-700 text-white px-5 py-2 rounded-full shadow-md transition flex items-center gap-2">
+                    <i class="fab fa-google"></i> Login Google
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative bg-black h-[500px] md:h-[600px] overflow-hidden shadow-md" 
+             x-data="{ 
+                activeSlide: 1, 
+                slides: [
+                    { id: 1, img: 'images/danau.png', alt: 'Danau Sentani' },
+                    { id: 2, img: 'images/sekolah.png', alt: 'Pendidikan Jayapura' }
+                ],
+                next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                start() { setInterval(() => this.next(), 5000) }
+             }" x-init="start()">
+        
+        <template x-for="slide in slides" :key="slide.id">
+            <div x-show="activeSlide === slide.id" 
+                 x-transition:enter="transition ease-out duration-1000"
+                 x-transition:enter-start="opacity-0 scale-105"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 class="absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
+                <img :src="slide.img" :alt="slide.alt" class="w-full h-full object-cover" 
+                     onerror="this.src='https://placehold.co/1200x600/31343C/EEE?text=Slide+Jayapura'">
+            </div>
+        </template>
+
+        <div class="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-white">
+            <h2 class="text-jayapura-yellow font-black text-xl md:text-2xl mb-2 tracking-[0.2em]">PORTAL RESMI</h2>
+            <h3 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight max-w-2xl">Membangun SDM Unggul <br>di Tanah Jayapura</h3>
+            <p class="text-lg md:text-xl mb-8 max-w-xl opacity-90 leading-relaxed">Pendaftaran beasiswa tingkat Siswa & Mahasiswa kini lebih mudah, transparan, dan terintegrasi secara digital.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#pendaftaran" class="bg-sky-blue hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-bold shadow-md transition flex items-center gap-2 group">
+                    <i class="fas fa-clipboard-check group-hover:scale-110 transition"></i> Proses Pendaftaran
+                </a>
+                <a href="#faq" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/50 px-8 py-3 rounded-lg font-bold shadow-md transition flex items-center gap-2">
+                    <i class="fas fa-question-circle"></i> FAQ Beasiswa
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 right-10 z-30 flex space-x-2">
+            <template x-for="slide in slides" :key="slide.id">
+                <button @click="activeSlide = slide.id" 
+                        :class="activeSlide === slide.id ? 'bg-jayapura-yellow w-8' : 'bg-white/50 w-3'" 
+                        class="h-3 rounded-full transition-all duration-300"></button>
+            </template>
+        </div>
+    </section>
+
+    <section id="pendaftaran" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-sky-blue uppercase">Alur Pendaftaran</h2>
+                <div class="h-1.5 w-24 bg-jayapura-red mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto px-4">
+                <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gray-100"></div>
+
+                <div class="relative flex items-center justify-between mb-12 w-full flex-row md:flex-row">
+                    <div class="hidden md:block w-5/12 text-right pr-8">
+                        <span class="text-jayapura-red font-black text-5xl opacity-20 italic">01</span>
+                    </div>
+                    <div class="z-20 flex items-center order-1 bg-jayapura-red shadow-md w-10 h-10 rounded-full border-4 border-white">
+                        <i class="fab fa-google mx-auto text-white"></i>
+                    </div>
+                    <div class="order-1 bg-white rounded-xl shadow-md w-[85%] md:w-5/12 px-6 py-6 border-b-4 border-jayapura-red">
+                        <h4 class="font-bold text-lg mb-1">Registrasi Akun Google</h4>
+                        <p class="text-gray-500 text-sm italic">Wajib menggunakan email Google aktif untuk menerima pemberitahuan otomatis.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between mb-12 w-full flex-row md:flex-row-reverse">
+                    <div class="hidden md:block w-5/12 text-left pl-8">
+                        <span class="text-jayapura-yellow font-black text-5xl opacity-40 italic">02</span>
+                    </div>
+                    <div class="z-20 flex items-center order-1 bg-jayapura-yellow shadow-md w-10 h-10 rounded-full border-4 border-white text-gray-800">
+                        <i class="fas fa-file-edit mx-auto"></i>
+                    </div>
+                    <div class="order-1 bg-white rounded-xl shadow-md w-[85%] md:w-5/12 px-6 py-6 border-b-4 border-jayapura-yellow">
+                        <h4 class="font-bold text-lg mb-1 text-left">Lengkapi Berkas Digital</h4>
+                        <p class="text-gray-500 text-sm">Unggah KTP, KTM/Kartu Pelajar, Kartu Keluarga, dan Surat Aktif Kuliah/Sekolah.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between mb-12 w-full">
+                    <div class="hidden md:block w-5/12 text-right pr-8">
+                        <span class="text-sky-blue font-black text-5xl opacity-20 italic">03</span>
+                    </div>
+                    <div class="z-20 flex items-center order-1 bg-sky-blue shadow-md w-10 h-10 rounded-full border-4 border-white">
+                        <i class="fas fa-user-check mx-auto text-white"></i>
+                    </div>
+                    <div class="order-1 bg-white rounded-xl shadow-md w-[85%] md:w-5/12 px-6 py-6 border-b-4 border-sky-blue">
+                        <h4 class="font-bold text-lg mb-1">Verifikasi & Pengumuman</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed">Dinas terkait akan memverifikasi berkas. Status dapat dipantau langsung di Dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
+                <i class="fas fa-question-circle text-jayapura-red"></i> Tanya Jawab
+            </h2>
+            
+            <div class="space-y-4" x-data="{ open: null }">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="open = (open === 1 ? null : 1)" class="w-full flex justify-between items-center p-5 font-bold hover:bg-gray-50 transition">
+                        <span>Siapa yang dapat mendaftar beasiswa ini?</span>
+                        <i class="fas transition-transform" :class="open === 1 ? 'fa-chevron-up rotate-180' : 'fa-chevron-down'"></i>
+                    </button>
+                    <div x-show="open === 1" x-transition class="p-5 border-t border-gray-100 text-gray-600 bg-white">
+                        Beasiswa ini diperuntukkan bagi seluruh mahasiswa dan siswa asli Kabupaten Jayapura (OAP) atau mereka yang telah menetap dan memiliki administrasi kependudukan di Kabupaten Jayapura.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="open = (open === 2 ? null : 2)" class="w-full flex justify-between items-center p-5 font-bold hover:bg-gray-50 transition">
+                        <span>Kapan pengumuman hasil seleksi dilakukan?</span>
+                        <i class="fas transition-transform" :class="open === 2 ? 'fa-chevron-up rotate-180' : 'fa-chevron-down'"></i>
+                    </button>
+                    <div x-show="open === 2" x-transition class="p-5 border-t border-gray-100 text-gray-600 bg-white">
+                        Jadwal pengumuman akan dirilis melalui menu "Pusat Informasi" setelah tahap verifikasi dokumen selesai dilakukan oleh tim penilai dari Dinas Pendidikan.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50 py-3 border-t border-gray-100">
+        <div class="flex justify-around items-center">
+            <a href="index.html" :class="currentPage === 'index.html' ? 'nav-active-mobile' : 'text-gray-400'" class="flex flex-col items-center">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">Beranda</span>
+            </a>
+            <a href="informasi.html" :class="currentPage === 'informasi.html' ? 'nav-active-mobile' : 'text-gray-400'" class="flex flex-col items-center">
+                <i class="fas fa-newspaper text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">Info</span>
+            </a>
+            <a href="login.html" class="bg-sky-blue text-white p-3 rounded-full shadow-lg transform -translate-y-5 border-4 border-white">
+                <i class="fab fa-google text-xl"></i>
+            </a>
+            <a href="kontak.html" :class="currentPage === 'kontak.html' ? 'nav-active-mobile' : 'text-gray-400'" class="flex flex-col items-center">
+                <i class="fas fa-headset text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">Kontak</span>
+            </a>
+            <a href="#faq" class="flex flex-col items-center text-gray-400">
+                <i class="fas fa-question-circle text-xl"></i>
+                <span class="text-[10px] mt-1 font-bold uppercase">FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <footer class="bg-gray-900 text-white pt-16 pb-28 md:pb-12 border-t-4 border-jayapura-yellow">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="images/logo-kabupaten-jayapura.png" alt="Logo" class="h-12 brightness-0 invert">
+                        <h4 class="text-xl font-bold uppercase">SIM Beasiswa</h4>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed italic">"Pendidikan adalah senjata paling ampuh yang bisa kamu gunakan untuk mengubah dunia."</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-6 border-l-4 border-jayapura-red pl-3 uppercase tracking-wider">Link Penting</h5>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.html" class="hover:text-jayapura-yellow flex items-center gap-2"><i class="fas fa-caret-right"></i> Beranda Utama</a></li>
+                        <li><a href="informasi.html" class="hover:text-jayapura-yellow flex items-center gap-2"><i class="fas fa-caret-right"></i> Syarat & Ketentuan</a></li>
+                        <li><a href="login.html" class="hover:text-jayapura-yellow flex items-center gap-2"><i class="fas fa-caret-right"></i> Login Pengguna</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-6 border-l-4 border-jayapura-red pl-3 uppercase tracking-wider">Kontak Dinas</h5>
+                    <p class="text-gray-400 mb-2 flex items-center gap-2"><i class="fas fa-map-marker-alt text-jayapura-red"></i> Kantor Bupati Jayapura - Gunung Merah</p>
+                    <p class="text-gray-400 flex items-center gap-2"><i class="fas fa-envelope text-sky-blue"></i> bantuan@jayapurakab.go.id</p>
+                </div>
+            </div>
+            
+            <hr class="my-10 border-gray-800">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
+                <p>&copy; 2024 Pemerintah Kabupaten Jayapura. Hak Cipta Dilindungi.</p>
+                <p class="flex items-center gap-2 italic">Powered by <a href="https://nokensoft.com" class="text-white font-bold hover:text-jayapura-yellow transition">Nokensoft.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
